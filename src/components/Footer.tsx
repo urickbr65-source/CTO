@@ -1,3 +1,5 @@
+"use client";
+
 import { AtSign, MessageCircle, PhoneCall } from "lucide-react";
 import {
   INSTAGRAM_AF_URL,
@@ -6,6 +8,11 @@ import {
   PHONE_TEL,
   WHATSAPP_URL,
 } from "@/lib/constants";
+import {
+  trackContactClick,
+  trackLeadClick,
+  trackWhatsAppClick,
+} from "@/lib/analytics/events";
 
 export function Footer() {
   return (
@@ -24,6 +31,8 @@ export function Footer() {
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-slate-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:text-foreground"
+            aria-label="Abrir Instagram da unidade de Alta Floresta"
+            onClick={() => trackContactClick("instagram")}
           >
             <AtSign className="h-4 w-4" />
             Instagram AF
@@ -33,6 +42,8 @@ export function Footer() {
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-slate-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:text-foreground"
+            aria-label="Abrir Instagram da unidade de Nova Monte Verde"
+            onClick={() => trackContactClick("instagram")}
           >
             <AtSign className="h-4 w-4" />
             Instagram N. Monte Verde
@@ -42,6 +53,12 @@ export function Footer() {
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-slate-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:text-foreground"
+            aria-label="Entrar em contato pelo WhatsApp"
+            onClick={() => {
+              trackWhatsAppClick("footer");
+              trackLeadClick("entrar_em_contato");
+              trackContactClick("whatsapp");
+            }}
           >
             <MessageCircle className="h-4 w-4" />
             WhatsApp
@@ -49,6 +66,11 @@ export function Footer() {
           <a
             href={PHONE_TEL}
             className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-slate-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:text-foreground"
+            aria-label="Ligar para CTO"
+            onClick={() => {
+              trackLeadClick("entrar_em_contato");
+              trackContactClick("telefone");
+            }}
           >
             <PhoneCall className="h-4 w-4" />
             {PHONE_DISPLAY}

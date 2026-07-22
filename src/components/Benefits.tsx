@@ -30,6 +30,7 @@ export function Benefits() {
               alt="Dr. Rodrigo Ramos atendendo paciente"
               fill
               loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 52vw"
               className="object-cover"
             />
           </div>

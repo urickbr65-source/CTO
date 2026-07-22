@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
+import { trackLeadClick, trackWhatsAppClick } from "@/lib/analytics/events";
 import { WHATSAPP_URL } from "@/lib/constants";
 
 export function CTA() {
@@ -37,6 +38,11 @@ export function CTA() {
           target="_blank"
           rel="noreferrer"
             className="cta-primary mt-9 px-10 py-4 text-base"
+          aria-label="Agendar avaliação pelo WhatsApp"
+          onClick={() => {
+            trackWhatsAppClick("cta_section");
+            trackLeadClick("agendar_avaliacao");
+          }}
         >
           <MessageCircle className="h-5 w-5" />
           Agendar pelo WhatsApp

@@ -14,6 +14,7 @@ import {
   Star,
   Stethoscope,
 } from "lucide-react";
+import { trackLeadClick, trackWhatsAppClick } from "@/lib/analytics/events";
 import { WHATSAPP_URL } from "@/lib/constants";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -68,6 +69,11 @@ export function Hero() {
               target="_blank"
               rel="noreferrer"
               className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-cta-blue px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_26px_-16px_rgba(37,99,235,0.95)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_20px_36px_-16px_rgba(37,99,235,0.75)]"
+              aria-label="Agendar avaliação pelo WhatsApp"
+              onClick={() => {
+                trackWhatsAppClick("hero_primary");
+                trackLeadClick("agendar_avaliacao");
+              }}
             >
               <span className="pointer-events-none absolute -inset-y-full left-[-40%] w-[44%] rotate-12 bg-white/35 opacity-0 blur-md transition-all duration-500 group-hover:inset-y-0 group-hover:left-[115%] group-hover:opacity-100" />
               Agendar avaliação
@@ -75,6 +81,7 @@ export function Hero() {
             <a
               href="#especialidades"
               className="cta-secondary"
+              aria-label="Conhecer tratamentos odontológicos"
             >
               Conhecer tratamentos
             </a>
@@ -125,6 +132,7 @@ export function Hero() {
                 alt="Dr. Rodrigo em atendimento odontológico"
                 fill
                 priority
+                sizes="(max-width: 1024px) 100vw, 44vw"
                 className="object-cover"
               />
             </div>
@@ -194,7 +202,10 @@ export function Hero() {
             </p>
           </motion.article>
 
-          <motion.article
+          <motion.a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noreferrer"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             animate={{ y: [0, 6, 0, -6, 0] }}
@@ -205,13 +216,21 @@ export function Hero() {
             }}
             whileHover={{ scale: 1.03, boxShadow: "0 24px 46px -28px rgba(17,24,39,0.4)" }}
             className="glass-card absolute top-44 -left-6 hidden p-3.5 md:block"
+            aria-label="Fazer orçamento pelo WhatsApp"
+            onClick={() => {
+              trackWhatsAppClick("hero_budget_widget");
+              trackLeadClick("fazer_orcamento");
+            }}
           >
             <p className="flex items-center gap-2 text-sm font-medium text-foreground">
               <MessageCircle className="h-4 w-4 text-cta-blue" /> Faça seu orçamento
             </p>
-          </motion.article>
+          </motion.a>
 
-          <motion.article
+          <motion.a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noreferrer"
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             animate={{ y: [0, -7, 0, 7, 0] }}
@@ -222,11 +241,16 @@ export function Hero() {
             }}
             whileHover={{ scale: 1.03, boxShadow: "0 24px 46px -28px rgba(17,24,39,0.4)" }}
             className="glass-card absolute -right-8 top-52 hidden p-3.5 md:block"
+            aria-label="Agendar avaliação pelo WhatsApp"
+            onClick={() => {
+              trackWhatsAppClick("hero_schedule_widget");
+              trackLeadClick("agendar_avaliacao");
+            }}
           >
             <p className="flex items-center gap-2 text-sm font-medium text-foreground">
               <CalendarDays className="h-4 w-4 text-cta-blue" /> Agende sua avaliação
             </p>
-          </motion.article>
+          </motion.a>
 
           <motion.article
             initial={{ opacity: 0, y: 12 }}

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { trackLeadClick, trackWhatsAppClick } from "@/lib/analytics/events";
 import { WHATSAPP_URL } from "@/lib/constants";
 
 const menuItems = [
@@ -63,6 +64,11 @@ export function Header() {
           target="_blank"
           rel="noreferrer"
           className="cta-primary px-5 py-2.5"
+          aria-label="Agendar avaliação pelo WhatsApp"
+          onClick={() => {
+            trackWhatsAppClick("header");
+            trackLeadClick("agendar_avaliacao");
+          }}
         >
           Agendar avaliação
         </a>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { trackEvent } from "@/lib/analytics/events";
 
 export function About() {
   return (
@@ -17,9 +18,11 @@ export function About() {
           <div className="relative h-full overflow-hidden rounded-[20px]">
             <Image
               src="/imagens/imagem2.jpg"
-              alt="Dr. Rodrigo Ramos"
+              alt="Dr. Rodrigo Ramos em pé na clínica CTO"
               fill
               loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              onLoad={() => trackEvent("view_gallery", { section: "sobre", image: "imagem2" })}
               className="object-cover"
             />
           </div>
