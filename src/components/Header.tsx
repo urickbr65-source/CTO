@@ -7,11 +7,14 @@ import { trackLeadClick, trackWhatsAppClick } from "@/lib/analytics/events";
 import { WHATSAPP_URL } from "@/lib/constants";
 
 const menuItems = [
-  { label: "Tratamentos", href: "#especialidades" },
-  { label: "Diferenciais", href: "#diferenciais" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Como funciona", href: "#processo" },
-  { label: "Depoimentos", href: "#depoimentos" },
+  { label: "Tratamentos", href: "/#especialidades" },
+  { label: "Diferenciais", href: "/#diferenciais" },
+  { label: "Sobre", href: "/#sobre" },
+  { label: "Como funciona", href: "/#processo" },
+  { label: "Depoimentos", href: "/#depoimentos" },
+  { label: "Dor de dente", href: "/dor-de-dente" },
+  { label: "Implantes", href: "/implantes" },
+  { label: "Agendar", href: "/agendar-consulta" },
 ];
 
 export function Header() {
@@ -40,7 +43,7 @@ export function Header() {
       className="fixed inset-x-0 top-0 z-50 border-b"
     >
       <div className="section-wrap flex h-20 items-center justify-between">
-        <Link href="#hero" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <span className="text-lg font-bold tracking-[0.16em] text-foreground">CTO</span>
           <span className="hidden text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground sm:block">
             Centro de Tratamento Odontológico
