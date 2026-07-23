@@ -1,6 +1,7 @@
 import { pushToDataLayer } from "./gtm";
 import { trackGaEvent, trackGaPageView } from "./ga";
 import { trackMetaEvent, trackMetaPageView } from "./meta-pixel";
+import { trackGoogleAdsConversion } from "./googleAds";
 
 export type ConversionEventName =
   | "click_whatsapp"
@@ -29,6 +30,7 @@ export function trackEvent(
 }
 
 export function trackWhatsAppClick(location: string) {
+  trackGoogleAdsConversion();
   trackEvent("click_whatsapp", { location });
 }
 
