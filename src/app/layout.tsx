@@ -47,6 +47,7 @@ export const metadata: Metadata = {
   creator: "CTO - Centro de Tratamento Odontológico",
   publisher: "CTO - Centro de Tratamento Odontológico",
   category: "healthcare",
+
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -63,17 +64,20 @@ export const metadata: Metadata = {
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: "CTO - Centro de Tratamento Odontológico | Alta Floresta e Nova Monte Verde",
     description: SITE_DESCRIPTION,
     images: ["/imagens/imagem2.jpg"],
   },
+
   manifest: "/manifest.webmanifest",
+
   icons: {
-    icon: [{ url: "/favicon.ico", sizes: "any" }],
-    apple: [{ url: "/favicon.ico" }],
-    shortcut: ["/favicon.ico"],
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
 };
 
@@ -104,12 +108,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${manrope.variable} h-full scroll-smooth antialiased`}>
+    <html
+      lang="pt-BR"
+      className={`${manrope.variable} h-full scroll-smooth antialiased`}
+    >
       <body className="min-h-full flex flex-col">
         <AnalyticsProvider />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema),
+          }}
         />
         {children}
       </body>
